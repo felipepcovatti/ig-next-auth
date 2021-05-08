@@ -48,6 +48,8 @@ api.interceptors.response.use(
           }).catch(err => {
             failedRequestsQueue.forEach(request => request.onFailure(err))
             failedRequestsQueue = []
+
+            signOut()
           }).finally(() => {
             isRefreshing = false
           })
